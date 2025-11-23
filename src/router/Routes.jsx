@@ -14,7 +14,7 @@ const router = createBrowserRouter([
         Component: Home,
       },
       {
-        path: './services',
+        path: '/services',
         Component: Services
       }
     ],

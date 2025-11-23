@@ -9,8 +9,8 @@ import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-import i1 from '../assets/1.jpg'
-import i2 from '../assets/2.jpg'
+import i1 from '../assets/2.jpg'
+import i2 from '../assets/1.jpg'
 import i3 from '../assets/3.png'
 import i4 from '../assets/4.jpg'
 import i5 from '../assets/5.jpg'

@@ -1,9 +1,11 @@
 import React from "react";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
+
+import logo from "../assets/paw1.png";
 
 const Navbar = () => {
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar bg-base-100 shadow-sm px-10">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -39,27 +41,31 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <p>
-          <Link to="/" className="text-xl font-bold">
-            WarmPaws
-          </Link>
-        </p>
+        <Link to="/">
+          <div className="flex justify-center items-center gap-2">
+            {" "}
+            <img src={logo} alt="" className="h-10 w-10" />
+            <p className="text-2xl font-bold">WarmPaws</p>
+          </div>
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          <li>
-            <Link to='/'>Home</Link>
+        <ul className="menu menu-horizontal px-1 text-[16px] mx-5 ">
+          <li className="rounded-3xl hover:text-[#ff3600] mr-4 py-1">
+            <NavLink to="/">Home</NavLink>
           </li>
-          <li>
-            <Link to='./services'>Services</Link>
+          <li className="rounded-3xl hover:text-[#ff3600] mr-4 py-1">
+            <NavLink to="/services">Services</NavLink>
           </li>
-          <li>
-            <a>My Profile</a>
+          <li className="rounded-3xl hover:text-[#ff3600] mr-4 py-1">
+            <NavLink to="/profile">My Profile</NavLink>
           </li>
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        <button className="btn bg-[#ff3600] rounded-2xl text-white hover:bg-transparent hover:text-[#ff3600] hover:border border-[#ff3600]">
+          Login
+        </button>
       </div>
     </div>
   );

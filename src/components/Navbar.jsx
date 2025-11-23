@@ -48,10 +48,10 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <a>Home</a>
+            <Link to='/'>Home</Link>
           </li>
           <li>
-            <a>Services</a>
+            <Link to='./services'>Services</Link>
           </li>
           <li>
             <a>My Profile</a>

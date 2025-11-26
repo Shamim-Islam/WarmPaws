@@ -96,6 +96,7 @@ const register = () => {
                 <button className="mt-4 btn bg-[#ff3600] rounded-lg text-white hover:bg-transparent hover:text-[#ff3600] hover:border border-[#ff3600]">
                   Register
                 </button>
+
                 <button
                   className="mt-4 btn hover:bg-[#ff3600] rounded-lg hover:text-white bg-transparent text-[#ff3600] hover:border border-[#ff3600]"
                   onClick={googleSignUp}

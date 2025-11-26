@@ -40,6 +40,7 @@ const AuthProvider = ({ children }) => {
     setUser,
     user,
     handleGoogleSignIn,
+    loading
   };
 
   return <AuthContext value={authData}>{children}</AuthContext>;

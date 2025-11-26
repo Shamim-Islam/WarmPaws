@@ -1,7 +1,29 @@
-import React from "react";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import React, { useContext } from "react";
 import { Link } from "react-router";
+import auth from "../firebase/firebase.config";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Login = () => {
+  const { setUser, user } = useContext(AuthContext);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const pass = e.target.password.value;
+
+    signInWithEmailAndPassword(auth, email, pass)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        setUser(user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  console.log(user);
+
   return (
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col">
@@ -11,7 +33,7 @@ const Login = () => {
         </div>
         <div className="card bg-base-100 w-full max-w-[600px] shadow-2xl">
           <div className="card-body">
-            <form action="">
+            <form action="" onSubmit={handleSubmit}>
               <fieldset className="fieldset">
                 <label className="label text-[16px] font-bold">Email</label>
                 <input

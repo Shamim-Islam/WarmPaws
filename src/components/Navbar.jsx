@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router";
 
 import logo from "../assets/paw1.png";
+import { AuthContext } from "../Provider/AuthProvider";
+import { signOut } from "firebase/auth";
+import auth from "../firebase/firebase.config";
 
 const Navbar = () => {
+  const { user } = useContext(AuthContext);
+
+  const handleSignOut = () => {
+    signOut(auth);
+  };
+
   return (
     <div className="navbar bg-base-100 shadow-sm px-10">
       <div className="navbar-start">
@@ -29,15 +38,14 @@ const Navbar = () => {
             tabIndex="-1"
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
-            <li>
-              <a>Home</a>
+            <li className="rounded-3xl hover:text-[#ff3600] mr-4 py-1">
+              <NavLink to="/">Home</NavLink>
             </li>
-
-            <li>
-              <a>Services</a>
+            <li className="rounded-3xl hover:text-[#ff3600] mr-4 py-1">
+              <NavLink to="/services">Services</NavLink>
             </li>
-            <li>
-              <a>My Profile</a>
+            <li className="rounded-3xl hover:text-[#ff3600] mr-4 py-1">
+              <NavLink to="/profile">My Profile</NavLink>
             </li>
           </ul>
         </div>
@@ -62,11 +70,26 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
-      <div className="navbar-end">
-        <Link to='/login' className="btn bg-[#ff3600] rounded-2xl text-white hover:bg-transparent hover:text-[#ff3600] hover:border border-[#ff3600]">
-          Login
-        </Link>
-      </div>
+      {user && (
+        <div className="navbar-end">
+          <btn
+            className="btn bg-[#ff3600] rounded-2xl text-white hover:bg-transparent hover:text-[#ff3600] hover:border border-[#ff3600]"
+            onClick={handleSignOut}
+          >
+            Logout
+          </btn>
+        </div>
+      )}
+      {!user && (
+        <div className="navbar-end">
+          <Link
+            to="/login"
+            className="btn bg-[#ff3600] rounded-2xl text-white hover:bg-transparent hover:text-[#ff3600] hover:border border-[#ff3600]"
+          >
+            Login
+          </Link>
+        </div>
+      )}
     </div>
   );
 };

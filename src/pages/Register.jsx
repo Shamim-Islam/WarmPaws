@@ -3,9 +3,11 @@ import { Link } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import auth from "../firebase/firebase.config";
+import { FcGoogle } from "react-icons/fc";
 
 const register = () => {
-  const { registerWithEmailPassword, setUser, user } = useContext(AuthContext);
+  const { registerWithEmailPassword, setUser, user, handleGoogleSignIn } =
+    useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,7 +25,7 @@ const register = () => {
           photoURL: photoUrl,
         })
           .then(() => {
-            setUser(user)
+            setUser(user);
           })
           .catch((err) => {
             console.log(err);
@@ -34,7 +36,14 @@ const register = () => {
       });
   };
 
-  console.log(user)
+  const googleSignUp = () => {
+    handleGoogleSignIn()
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div className="hero bg-base-200 min-h-screen">
@@ -86,6 +95,12 @@ const register = () => {
                 </div>
                 <button className="mt-4 btn bg-[#ff3600] rounded-lg text-white hover:bg-transparent hover:text-[#ff3600] hover:border border-[#ff3600]">
                   Register
+                </button>
+                <button
+                  className="mt-4 btn hover:bg-[#ff3600] rounded-lg hover:text-white bg-transparent text-[#ff3600] hover:border border-[#ff3600]"
+                  onClick={googleSignUp}
+                >
+                  <FcGoogle /> SignUp With Google
                 </button>
               </fieldset>
             </form>

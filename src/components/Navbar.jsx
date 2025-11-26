@@ -66,7 +66,7 @@ const Navbar = () => {
             <NavLink to="/services">Services</NavLink>
           </li>
           <li className="rounded-3xl hover:text-[#ff3600] mr-4 py-1">
-            <NavLink to="/profile">My Profile</NavLink>
+            <NavLink to={"/profile"}>My Profile</NavLink>
           </li>
         </ul>
       </div>

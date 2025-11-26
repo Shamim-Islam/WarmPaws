@@ -4,6 +4,7 @@ import Home from "../pages/Home";
 import Services from "../pages/Services";
 import Login from "../pages/Login";
 import register from "../pages/register";
+import Profile from "../pages/Profile";
 
 
 
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: '/register',
         Component: register
+      },
+      {
+        path: '/profile',
+        Component: Profile
       }
     ],
   },

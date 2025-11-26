@@ -3,9 +3,10 @@ import React, { useContext } from "react";
 import { Link } from "react-router";
 import auth from "../firebase/firebase.config";
 import { AuthContext } from "../Provider/AuthProvider";
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
-  const { setUser, user } = useContext(AuthContext);
+  const { setUser, handleGoogleSignIn } = useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,7 +23,14 @@ const Login = () => {
       });
   };
 
-  console.log(user);
+  const googleSignIn = () => {
+    handleGoogleSignIn()
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div className="hero bg-base-200 min-h-screen">
@@ -60,6 +68,9 @@ const Login = () => {
                 </div>
                 <button className="mt-4 btn bg-[#ff3600] rounded-lg text-white hover:bg-transparent hover:text-[#ff3600] hover:border border-[#ff3600]">
                   Login
+                </button>
+                <button className="mt-4 btn hover:bg-[#ff3600] rounded-lg hover:text-white bg-transparent text-[#ff3600] hover:border border-[#ff3600]" onClick={googleSignIn}>
+                  <FcGoogle /> Login With Google
                 </button>
               </fieldset>
             </form>

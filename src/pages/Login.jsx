@@ -1,15 +1,18 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import auth from "../firebase/firebase.config";
 import { AuthContext } from "../Provider/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
   const { setUser, handleGoogleSignIn } = useContext(AuthContext);
   const location = useLocation();
-  const navigate = useNavigate()
-  console.log(location)
+  const navigate = useNavigate();
+
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,7 +23,7 @@ const Login = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         setUser(user);
-        navigate(location.state)
+        navigate(location.state);
       })
       .catch((error) => {
         console.log(error);
@@ -34,6 +37,11 @@ const Login = () => {
         setUser(user);
       })
       .catch((err) => console.log(err));
+  };
+
+  const handleTogglePasswordShow = (e) => {
+    e.preventDefault();
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -55,12 +63,20 @@ const Login = () => {
                   placeholder="Your Email"
                 />
                 <label className="label text-[16px] font-bold">Password</label>
-                <input
-                  name="password"
-                  type="password"
-                  className="input w-full"
-                  placeholder="Password"
-                />
+                <div className="relative">
+                  <input
+                    name="password"
+                    type={showPassword ? "text" : "password"}
+                    className="input w-full"
+                    placeholder="Password"
+                  />
+                  <button
+                    onClick={handleTogglePasswordShow}
+                    className="btn btn-xs absolute top-2 right-3"
+                  >
+                    {showPassword ? <FaEyeSlash /> : <FaEye />}
+                  </button>
+                </div>
                 <div>
                   <a className="link link-hover">Forgot password?</a>
                 </div>
@@ -73,7 +89,10 @@ const Login = () => {
                 <button className="mt-4 btn bg-[#ff3600] rounded-lg text-white hover:bg-transparent hover:text-[#ff3600] hover:border border-[#ff3600]">
                   Login
                 </button>
-                <button className="mt-4 btn hover:bg-[#ff3600] rounded-lg hover:text-white bg-transparent text-[#ff3600] hover:border border-[#ff3600]" onClick={googleSignIn}>
+                <button
+                  className="mt-4 btn hover:bg-[#ff3600] rounded-lg hover:text-white bg-transparent text-[#ff3600] hover:border border-[#ff3600]"
+                  onClick={googleSignIn}
+                >
                   <FcGoogle /> Login With Google
                 </button>
               </fieldset>

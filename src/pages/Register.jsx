@@ -11,7 +11,7 @@ const register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const email = e.target.email.value;
+    const email = e.target.email.value.trim();
     const pass = e.target.password.value;
     const name = e.target.name.value;
     const photoUrl = e.target.photoUrl.value;

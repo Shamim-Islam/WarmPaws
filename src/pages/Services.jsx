@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router";
 
 const Services = () => {
   const [services, setServices] = useState([]);
@@ -44,9 +45,11 @@ const Services = () => {
               </div>
               <br />
               <div className="card-actions justify-center">
-                <button className="btn bg-[#ff3600] rounded-2xl text-white hover:bg-transparent hover:text-[#ff3600] hover:border border-[#ff3600]">
-                  View Details
-                </button>
+                <Link to={`/details/${service?.serviceId}`}>
+                  <button className="btn px-6 bg-[#ff3600] rounded-2xl text-white hover:bg-transparent hover:text-[#ff3600] hover:border border-[#ff3600] text-[16px]">
+                    View Details
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

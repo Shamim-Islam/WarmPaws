@@ -10,7 +10,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const email = e.target.email.value;
+    const email = e.target.email.value.trim();
     const pass = e.target.password.value;
 
     signInWithEmailAndPassword(auth, email, pass)

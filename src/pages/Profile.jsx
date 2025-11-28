@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import auth from "../firebase/firebase.config";
+import { toast } from "react-toastify";
 
 const Profile = () => {
   const { user, setUser } = useContext(AuthContext);
@@ -11,7 +12,7 @@ const Profile = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleUpdateProfile = (e) => { 
+  const handleUpdateProfile = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
     const photoUrl = e.target.photoUrl.value;
@@ -20,10 +21,11 @@ const Profile = () => {
       photoURL: photoUrl,
     })
       .then(() => {
-        setUser({...user,photoURL:photoUrl, displayName:name})
+        setUser({ ...user, photoURL: photoUrl, displayName: name });
+        toast.success("Profile Updated successfully!");
       })
       .catch((error) => {
-        console.log(error);
+       toast.error(error.message);
       });
   };
 

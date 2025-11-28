@@ -5,12 +5,14 @@ import logo from "../assets/paw1.png";
 import { AuthContext } from "../Provider/AuthProvider";
 import { signOut } from "firebase/auth";
 import auth from "../firebase/firebase.config";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const { user } = useContext(AuthContext);
 
   const handleSignOut = () => {
     signOut(auth);
+    toast.success("LogOut successfully!");
   };
 
   return (

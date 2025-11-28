@@ -1,13 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import auth from "../firebase/firebase.config";
 import { FcGoogle } from "react-icons/fc";
+import { toast } from "react-toastify";
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
 
 const register = () => {
   const { registerWithEmailPassword, setUser, user, handleGoogleSignIn } =
     useContext(AuthContext);
+
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,20 +25,21 @@ const register = () => {
     const lowerCase = /[a-z]/;
 
     if (pass.length < 6) {
-      return alert("Password should be minimum 6 characters.");
+      return toast.warning("Password should be minimum 6 characters.");
     }
 
     if (!upperCase.test(pass)) {
-      return alert("Need at least 1 uppercase characters");
+      return toast.warning("Need at least 1 uppercase characters");
     }
 
     if (!lowerCase.test(pass)) {
-      return alert("Need at least 1 lowercase characters");
+      return toast.warning("Need at least 1 lowercase characters");
     }
 
     registerWithEmailPassword(email, pass)
       .then((userCredential) => {
         const user = userCredential.user;
+        toast.success("User Registration successfull!");
 
         updateProfile(auth.currentUser, {
           displayName: name,
@@ -56,8 +62,14 @@ const register = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
+        toast.success("Login successful!");
       })
       .catch((err) => console.log(err));
+  };
+
+  const handleTogglePasswordShow = (e) => {
+    e.preventDefault();
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -93,12 +105,20 @@ const register = () => {
                   placeholder="Enter Your PhotoUrl"
                 />
                 <label className="label text-[16px] font-bold">Password</label>
-                <input
-                  name="password"
-                  type="password"
-                  className="input w-full"
-                  placeholder="Password"
-                />
+                <div className="relative">
+                  <input
+                    name="password"
+                    type={showPassword ? "text" : "password"}
+                    className="input w-full"
+                    placeholder="Password"
+                  />
+                  <button
+                    onClick={handleTogglePasswordShow}
+                    className="btn btn-xs absolute top-2 right-3"
+                  >
+                    {showPassword ? <FaEyeSlash /> : <FaEye />}
+                  </button>
+                </div>
                 <div>
                   <a className="link link-hover">Forgot password?</a>
                 </div>

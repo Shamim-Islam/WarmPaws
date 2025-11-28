@@ -1,16 +1,108 @@
-# React + Vite
+# WarmPaws – Pet Care in Winter
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📖 Project Overview
 
-Currently, two official plugins are available:
+WarnPaws is a comprehensive veterinary service platform that connects pet owners with qualified veterinarians. The application allows users to browse vet profiles, view their specializations and experience, and book appointments seamlessly.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🎯 Purpose
 
-## React Compiler
+To create a digital platform that makes veterinary services more accessible to pet owners while providing veterinarians with a professional online presence to showcase their expertise and services.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🌐 Live URL
 
-## Expanding the ESLint configuration
+[**Visit VetCare Live Site**](https://warm-paws33.netlify.app/)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ✨ Key Features
+
+### 🔐 Authentication & User Management
+
+- **User Registration & Login** with email/password
+- **Google Sign-In** integration
+- **Protected Routes** for authenticated users
+- **Persistent Login State** across browser sessions
+
+### 🩺 Veterinary Services
+
+- **Vet Directory** with detailed profiles
+- **Specialization Filtering** (Small Animal, Surgery, Emergency Care, Exotic Animals)
+- **Experience-based Search** to find experienced veterinarians
+- **Professional Vet Profiles** with images and credentials
+
+### 🎨 User Experience
+
+- **Responsive Design** that works on all devices
+- **Modern UI/UX** with intuitive navigation
+- **Loading States** and error handling
+- **Clean, Professional Interface**
+
+### 🔧 Technical Features
+
+- **Real-time Data** with Firebase integration
+- **Secure Authentication** with Firebase Auth
+- **Optimized Performance** with React best practices
+- **SEO-friendly** structure
+
+## 🛠️ Technology Stack
+
+### Frontend Framework
+
+- **React** - Main frontend library
+- **React Router DOM** - Client-side routing
+- **React Hot Toast** - User notifications
+
+### Authentication & Backend
+
+- **Firebase Authentication** - User management
+- **Firebase Firestore** - Database
+- **Firebase Hosting** - Deployment
+
+### Styling & UI
+
+- **Tailwind CSS** - Utility-first CSS framework
+- **CSS3** - Custom styles
+- **React Icons** - Icon library
+
+### Development Tools
+
+- **npm** - Package management
+- **Git** - Version control
+- **Netlify** - Deployment platform
+
+## 📦 NPM Packages Used
+
+### Core Dependencies
+
+```json
+{
+  "react": "^18.2.0",
+  "react-dom": "^18.2.0",
+  "react-router-dom": "^6.8.0",
+  "react-scripts": "5.0.1"
+}
+```
+
+# Future Enhancements
+
+Appointment booking system
+
+Real-time chat with vets
+
+Payment integration
+
+Mobile app development
+
+Review and rating system
+
+Pet medical history tracking
+
+# Contributing
+
+Fork the project
+
+Create your feature branch (git checkout -b feature/AmazingFeature)
+
+Commit your changes (git commit -m 'Add some AmazingFeature')
+
+Push to the branch (git push origin feature/AmazingFeature)
+
+Open a Pull Request

@@ -72,21 +72,20 @@ const Navbar = () => {
       </div>
       {user && (
         <div className="navbar-end">
-          <btn
+          <button
             className="btn bg-[#ff3600] rounded-2xl text-white hover:bg-transparent hover:text-[#ff3600] hover:border border-[#ff3600]"
             onClick={handleSignOut}
           >
             Logout
-          </btn>
+          </button>
         </div>
       )}
       {!user && (
         <div className="navbar-end">
-          <Link
-            to="/login"
-            className="btn bg-[#ff3600] rounded-2xl text-white hover:bg-transparent hover:text-[#ff3600] hover:border border-[#ff3600]"
-          >
-            Login
+          <Link to="/login">
+            <button className="btn bg-[#ff3600] rounded-2xl text-white hover:bg-transparent hover:text-[#ff3600] hover:border border-[#ff3600]">
+              Login
+            </button>
           </Link>
         </div>
       )}
